@@ -454,10 +454,6 @@ func (c *Container) Start() error {
 
 // Execute executes the given command in a temporary container.
 func (c *Container) Execute(args ...string) ([]byte, error) {
-	if err := c.makeSure(isNotDefined); err != nil {
-	        return nil, err
-	}
-
 	var output []byte
 	var err error
 	cargs := []string{"lxc-execute", "-n", c.Name(), "-P", c.ConfigPath(), "--"}
